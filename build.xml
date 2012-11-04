@@ -1,0 +1,109 @@
+<project name="MistFalls-Finances" basedir=".">
+
+	<property name="source"			value="sources"/>
+	<property name="tests"			value="sources/tests"/>
+	<property name="compiled" 		value="binaries/compiled"/>
+	<property name="compiled.tests"	value="binaries/compiled/tests"/>
+	<property name="distributables"	value="binaries/distributable"/>
+	<property name="libraries"		value="libraries"/>
+	<property name="documentation"	value="documentation"/>
+	<property name="reports"		value="reports"/>
+	<property name="entry-point"	value="com.mistfalls.finances.Application"/>
+	<property name="spike-entry-point" value="com.mistfalls.finances.spikes.JFrameSpike"/>
+
+	<path id="classpath">
+		<fileset dir="${libraries}" includes="**/*.jar"/>
+	</path>
+
+	<target name="clean">
+		<delete dir="${reports}"/>
+		<delete dir="${compiled}"/>
+		<delete dir="${distributables}"/>
+	</target>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="${compiled}"/>
+		<javac srcdir="${source}" destdir="${compiled}" classpathref="classpath" includeantruntime="false"/>
+	</target>
+
+	<target name="distributable" depends="compile">
+		<mkdir dir="${distributables}" />
+		<jar destfile="${distributables}/${ant.project.name}.jar" basedir="${compiled}">
+			<manifest>
+				<attribute name="Main-Class" value="${entry-point}"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="distributable-spikes" depends="compile">
+		<mkdir dir="${distributables}"/>
+		<jar destfile="${distributables}/${ant.project.name}-Spikes.jar" basedir="${compiled}"/>
+	</target>
+
+	<target name="test" depends="distributable">
+		<mkdir dir="${reports}/html"/>
+		<junit printsummary="yes" haltonfailure="no">
+			<formatter type="xml"/>
+			<classpath>
+				<pathelement location="${compiled}"/>
+				<pathelement path="${java.class.path}"/>
+			</classpath>
+			<batchtest fork="no" todir="${reports}">
+				<fileset dir="${tests}">
+					<include name="**/*Test*.java"/>
+					<exclude name="**/AllTests.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+		<junitreport todir="reports">
+		  <fileset dir="reports">
+		    <include name="TEST-*.xml"/>
+		  </fileset>
+		  <report format="frames" todir="reports/html"/>
+		</junitreport>
+	</target>
+
+	<target name="execute" depends="distributable">
+		<java fork="true" classname="${entry-point}">
+			<classpath>
+				<path refid="classpath"/>
+				<path location="${distributables}/${ant.project.name}.jar"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="execute-spike" depends="distributable-spikes">
+		<java fork="true" classname="${spike-entry-point}">
+			<classpath>
+				<path refid="classpath"/>
+				<path location="${distributables}/${ant.project.name}-Spikes.jar"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="documentation">
+		<javadoc destdir="documentation" author="true" version="true" use="true" windowtitle="MistFalls Ledger">
+
+		<fileset dir="sources/spikes" defaultexcludes="yes">
+			<include name="com/mistfalls/finances/spikes/**"/>
+		</fileset>
+
+		<fileset dir="sources/tests" defaultexcludes="yes">
+			<include name="com/mistfalls/finances/tests/**"/>
+		</fileset>
+
+		<fileset dir="sources" defaultexcludes="yes">
+		  <include name="com/mistfalls/finances/**"/>
+		</fileset>
+
+		<doctitle><![CDATA[<h1>MistFalls Finances</h1>]]></doctitle>
+		<bottom><![CDATA[<i>Copyright &#169; 2012 MistFalls. All Rights Reserved.</i>]]></bottom>
+		<tag name="todo" scope="all" description="To do:"/>
+		<group title="Application Packages" packages="com.mistfalls.*"/>
+		
+		<group title="Spike Packages" packages="com.mistfalls.finances.spikes*"/>
+		<group title="Test Packages" packages="com.mistfalls.finances.tests*"/>
+		<link href="http://developer.java.sun.com/developer/products/xml/docs/api/"/>
+		</javadoc>
+	</target>
+</project>
