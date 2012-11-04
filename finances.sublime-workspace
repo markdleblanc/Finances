@@ -174,6 +174,7 @@
 				"buffer_size": 1524,
 				"line_ending": "Unix"
 			}
+<<<<<<< HEAD
 		},
 		{
 			"file": "README.md",
@@ -182,6 +183,8 @@
 				"buffer_size": 307,
 				"line_ending": "Unix"
 			}
+=======
+>>>>>>> 030fd5371f10310f96bfd5b813d6ef0d79d6cf29
 		}
 	],
 	"build_system": "Packages/User/Ant-Execute-Spike.sublime-build",
@@ -276,7 +279,10 @@
 	},
 	"file_history":
 	[
+<<<<<<< HEAD
 		"/home/mark/Dropbox/Development/historical projects/iDrop/src/com/omnilabs/idrop/Program.java",
+=======
+>>>>>>> 030fd5371f10310f96bfd5b813d6ef0d79d6cf29
 		"/home/mark/Development/Finances/sources/tests/com/mistfalls/finances/tests/domain/TransactionTest.java",
 		"/home/mark/Development/Finances/sources/tests/com/mistfalls/finances/tests/domain/ReportTest.java",
 		"/home/mark/Development/Finances/sources/tests/com/mistfalls/finances/tests/domain/CurrencyTest.java",
@@ -777,7 +783,11 @@
 			]
 		},
 		{
+<<<<<<< HEAD
 			"selected": 2,
+=======
+			"selected": 1,
+>>>>>>> 030fd5371f10310f96bfd5b813d6ef0d79d6cf29
 			"sheets":
 			[
 				{
@@ -1008,6 +1018,7 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+<<<<<<< HEAD
 				},
 				{
 					"buffer": 5,
@@ -1122,6 +1133,8 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+=======
+>>>>>>> 030fd5371f10310f96bfd5b813d6ef0d79d6cf29
 				}
 			]
 		}
