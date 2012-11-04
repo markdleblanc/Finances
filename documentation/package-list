@@ -1,0 +1,6 @@
+com.mistfalls.finances
+com.mistfalls.finances.models
+com.mistfalls.finances.models.exceptions
+com.mistfalls.finances.spikes
+com.mistfalls.finances.tests
+com.mistfalls.finances.tests.domain

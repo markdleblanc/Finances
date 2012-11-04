@@ -1,0 +1,28 @@
+Item support in our Transactions.
+Local storage of items in account.
+Debt support, the ability to have an account in arears.
+Representation of Product Requirement (Materials, Workforce, etc), and Product 
+Product sales, returns, defects, etc.
+Temporal Agreements, and Rule components.
+Event management.
+Graphical representation of events, and historical trends.
+Unbacked transactions need to be supported, whereas one account
+is unknown, and not represented.
+
+Need to support 'credit' type accounts, where debt can be accrued.
+
+Over-simplification of business transactions:
+
+Businesses can recieve money as such:
+	Providing products & services.
+	Recieving investment capital.
+	Making investments, interest accrual.
+
+Is the commit & rollback functionality over-cumbersome?
+
+Mark:
+$375 Dollars Accrued.
+$1,000 Dollars Debt -> Rogers
+$1,100 Dollars Debt -> Visa
+$600   Dollars Debt -> Mastercard
+$1,000 Dollars Debt -> Lloyd

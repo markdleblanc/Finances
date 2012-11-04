@@ -1,0 +1,11 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/mark/Development/Finances"
+		}
+	],
+	"settings": {
+        "build_switcher_systems": ["Ant-Test", "Ant-Execute", "Ant-Execute-Spike", "Ant-Documentation"]
+    }
+}
